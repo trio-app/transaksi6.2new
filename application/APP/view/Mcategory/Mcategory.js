@@ -1,15 +1,11 @@
-Ext.define('Almindo.view.Mitem.Mitem', {
+Ext.define('Almindo.view.Mcategory.Mcategory', {
     extend: 'Ext.panel.Panel',
     config: {},
     requires: [
-        'Almindo.controller.Cmitem',
+        'Almindo.controller.Cmcategory',
         'Almindo.view.temp.Trickmenu',
-        'Almindo.view.Mitem.FRMmitem',
-        'Almindo.view.Mitem.GRIDmitem',
-        'Almindo.store.STmitem',
-        'Almindo.model.MODmitem',
-        'Almindo.store.STmunit',
-        'Almindo.model.MODmunit',
+        'Almindo.view.Mcategory.FRMmcategory',
+        'Almindo.view.Mcategory.GRIDmcategory',
         'Almindo.store.STmcategory',
         'Almindo.model.MODmcategory'
     ],
@@ -17,7 +13,7 @@ Ext.define('Almindo.view.Mitem.Mitem', {
         return this.callParent(arguments);
     },
     //untuk include controller
-    controller: 'Cmitem',
+    controller: 'Cmcategory',
 
     initComponent: function () {
 
@@ -37,19 +33,18 @@ Ext.define('Almindo.view.Mitem.Mitem', {
                     xtype: 'container',
                     layout: 'column',
                     margin: '5',
-                    autoScroll: true,
                     defaultType: 'container',
                     items: [{
                         columnWidth: 1/3,
                         padding: '0 5 5 5',
                         items: [{
-                                xtype: 'FRMmitem'
+                                xtype: 'FRMmcategory'
                         }]
                     },{
                         columnWidth: 2/3,
                         padding: '0 0 5 5',
                         items: [{
-                                xtype: 'GRIDmitem'
+                                xtype: 'GRIDmcategory'
                         }]
                     }]
                 }

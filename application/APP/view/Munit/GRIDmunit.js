@@ -5,7 +5,7 @@ Ext.define('Almindo.view.Munit.GRIDmunit', {
     title: 'List Data Master Unit',
 //            modal: true,
 //            width:600,
-    heigth:400,
+    height:400,
     frame:true,
     emptyText: 'No Matching Records',
     stateId: 'stateful-filter-grid',

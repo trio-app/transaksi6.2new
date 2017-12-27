@@ -29,9 +29,9 @@ Ext.define('Almindo.view.Munit.FRMmunit', {
                 width:300,
                 hidden:true
             },{
-                fieldLabel: 'Unit Name',
+                fieldLabel: 'Name',
                 name: 'unit_nama',
-                width:200,
+                width:300,
                 allowBlank: false,
                 listeners: {
                             afterrender: function(me){
@@ -39,7 +39,7 @@ Ext.define('Almindo.view.Munit.FRMmunit', {
                             }
                             }
             },{
-                fieldLabel: 'Unit Description',
+                fieldLabel: 'Description',
                 name: 'unit_desc',
                 width:300,
                 allowBlank: true

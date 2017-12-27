@@ -29,9 +29,9 @@ Ext.define('Almindo.view.Mjbahan.FRMmjbahan', {
                 width:300,
                 hidden:true
             },{
-                fieldLabel: 'Jenis Bahan Name',
+                fieldLabel: 'Name',
                 name: 'jbahan_nama',
-                width:200,
+                width:300,
                 allowBlank: false,
                 listeners: {
                             afterrender: function(me){
@@ -39,7 +39,7 @@ Ext.define('Almindo.view.Mjbahan.FRMmjbahan', {
                             }
                             }
             },{
-                fieldLabel: 'Jenis Bahan Description',
+                fieldLabel: 'Description',
                 name: 'jbahan_desc',
                 width:300,
                 allowBlank: true

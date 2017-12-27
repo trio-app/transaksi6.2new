@@ -29,9 +29,9 @@ Ext.define('Almindo.view.Mwarnaglasin.FRMmwarnaglasin', {
                 width:300,
                 hidden:true
             },{
-                fieldLabel: 'Warna Glasin Name',
+                fieldLabel: 'Name',
                 name: 'warnaglasin_nama',
-                width:200,
+                width:300,
                 allowBlank: false,
                 listeners: {
                             afterrender: function(me){
@@ -39,7 +39,7 @@ Ext.define('Almindo.view.Mwarnaglasin.FRMmwarnaglasin', {
                             }
                             }
             },{
-                fieldLabel: 'Warna Glasin Description',
+                fieldLabel: 'Description',
                 name: 'warnaglasin_desc',
                 width:300,
                 allowBlank: true

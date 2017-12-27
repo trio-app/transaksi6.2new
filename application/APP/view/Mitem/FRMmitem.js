@@ -58,7 +58,7 @@ Ext.define('Almindo.view.Mitem.FRMmitem', {
                 allowBlank: true,
                 queryMode:'local',
                 forceSelection: true,
-                width:220,
+                width:300,
                 store: {
                     type: 'STmcategory'
                     }
@@ -77,7 +77,7 @@ Ext.define('Almindo.view.Mitem.FRMmitem', {
                 allowBlank: false,
                 queryMode:'local',
                 forceSelection: true,
-                width:220,
+                width:300,
                 store: {
                     type: 'STmunit'
                     }
@@ -85,7 +85,7 @@ Ext.define('Almindo.view.Mitem.FRMmitem', {
         },{
             xtype: 'container',
             layout: 'vbox',
-            defaultType: 'textfield',
+            defaultType: 'numberfield',
             margin: '0 0 5 0',
             items: [{
                 fieldLabel: 'Harga Satuan',
@@ -93,12 +93,12 @@ Ext.define('Almindo.view.Mitem.FRMmitem', {
                 width:300,
                 allowBlank: false
             },{
-                fieldLabel: 'Item Weight',
+                fieldLabel: 'Berat',
                 name: 'item_weight',
                 width:300,
                 allowBlank: false,
             },{
-                fieldLabel: 'Item Upp',
+                fieldLabel: 'Upp',
                 name: 'item_upp',
                 width:300,
                 allowBlank: false,

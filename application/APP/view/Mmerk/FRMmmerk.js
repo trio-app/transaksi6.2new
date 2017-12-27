@@ -29,9 +29,9 @@ Ext.define('Almindo.view.Mmerk.FRMmmerk', {
                 width:300,
                 hidden:true
             },{
-                fieldLabel: 'Nama',
+                fieldLabel: 'Name',
                 name: 'merk_nama',
-                width:200,
+                width:300,
                 allowBlank: false,
                 listeners: {
                             afterrender: function(me){

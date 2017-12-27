@@ -13,7 +13,7 @@ Ext.define('Almindo.view.Mbahan.FRMmbahan', {
     items: [{
         xtype: 'fieldset',
         defaultType: 'textfield',
-        title:'Form Input Master Bahan',
+        title:'Form Input Master Produk',
         layout: 'anchor',
         defaults: {
             anchor: '100%'
@@ -48,7 +48,7 @@ Ext.define('Almindo.view.Mbahan.FRMmbahan', {
             },{
                 name: 'bahan_nama',
                 //fieldStyle: 'background-color: #ddd; background-image: none;',
-                flex: 2,
+                flex: 0,
                 fieldLabel: 'Nama Produk ',
                 labelAlign: 'top',
                 allowBlank: false,

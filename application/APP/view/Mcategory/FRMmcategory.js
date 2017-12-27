@@ -31,7 +31,7 @@ Ext.define('Almindo.view.Mcategory.FRMmcategory', {
             },{
                 fieldLabel: 'Name',
                 name: 'category_nama',
-                width:200,
+                width:300,
                 allowBlank: false,
                 listeners: {
                             afterrender: function(me){

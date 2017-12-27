@@ -60,7 +60,7 @@ Ext.define('Almindo.view.Mitem.FRMmitem', {
                 forceSelection: true,
                 width:220,
                 store: {
-                    type: 'STmunit'
+                    type: 'STmcategory'
                     }
             }]
         },{

@@ -16,11 +16,6 @@ Ext.define('Almindo.view.temp.Trickmenu', {
                 tooltip:'New Input Data'
             },'-',{
                 xtype: 'button',
-                pid:'edit',
-                iconCls: 'fa fa-edit',
-                tooltip:'edit Input Data'
-            },'-',{
-                xtype: 'button',
                 pid:'save',
                 iconCls: 'fa fa-save',
                 tooltip:'Save Process'

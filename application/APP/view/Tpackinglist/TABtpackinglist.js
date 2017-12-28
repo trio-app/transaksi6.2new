@@ -2,7 +2,7 @@ Ext.define('Almindo.view.Tpackinglist.TABtpackinglist',{
     extend: 'Ext.tab.Panel',
     alias: 'widget.TABtpackinglist',
     reference:'TABtpackinglist',
-    
+    activeTab:0,
     tabBar: {
         layout: {
             type: 'hbox',
@@ -13,11 +13,11 @@ Ext.define('Almindo.view.Tpackinglist.TABtpackinglist',{
     items: [{
         title: 'FORM INPUT PACKING LIST',
         layout: 'anchor',
-        /*items: [{
-            xtype: ''
+        items: [{
+            xtype: 'FRMtpackinglist'
         },{
-            xtype: '',
-        }],*/
+            xtype: 'GRIDtpackinglist_mat',
+        }],
        /*buttons: [{
             text: 'Save',
             action: 'add'
@@ -35,7 +35,7 @@ Ext.define('Almindo.view.Tpackinglist.TABtpackinglist',{
         title: 'LIST DATA PACKING LIST',
         layout: 'anchor',
         items: [{
-                xtype: '',
+                xtype: 'GRIDtpackinglist',
                 //store: Ext.create('Almindo.Tpackinglist.store.ST_tpackinglist')
         }]
     }]

@@ -21,10 +21,33 @@ Ext.define('Almindo.controller.Ctpackinglist',{
             'trickmenu button[pid=refresh]':{
               click: this.dorefresh
             },
+            'GRIDtpackinglist_mat button[pid=add_item]':{
+                click: this.doshowitem
+            },
+            'FRMtpackinglist button[pid=add_cust]':{
+                click : this.doaddcust
+            },
+            'GRIDtpackinglist button[pid=add_show]':{
+                click : this.doaddshow
+            },
             'GRIDmunit ': {
                 itemdblclick: this.onRowdblclick
               }
         });
-    }
-    
+    },
+        doaddshow: function(){
+                this.getView().add({
+                    xtype :'FRMtpackinglist'
+                }).show();
+        },
+        doshowitem:function(){
+                this.getView().add({
+                    xtype :'WINtitem'
+                }).show();
+        },
+        doaddcust:function(){
+                this.getView().add({
+                    xtype : 'WINtcustomer'
+                }).show();
+        },
 });

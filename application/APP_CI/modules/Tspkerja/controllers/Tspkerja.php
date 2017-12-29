@@ -83,7 +83,7 @@ class Tspkerja extends MX_Controller {
                         $data['spk_customer'] = $rec['customer_nama'];
                         $data['spk_date'] = date_format(date_create($rec['spk_date']), 'd F Y');
                         $data['spk_delivery'] = date_format(date_create($rec['spk_delivery']), 'd F Y');
-                        $data['spk_tglkirim'] = date_format(date_create($rec['spk_delivery']), 'd F Y');
+                        $data['spk_tglkirim'] = date_format(date_create($rec['spk_tglkirim']), 'd F Y');
                         $data['value']= $this->R_tspkerja->reportPreview($id);
 
                         //$data['recout_detail'] = $this->Rspkerja->reportDetail($rec['receiptout_doc']);

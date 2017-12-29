@@ -374,7 +374,7 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
             readOnly: true
         },{
             id: 'bahan_sensor',
-            name: 'sensor',
+            name: 'spk_sensor',
             fieldLabel: 'Sensor ',
             margin: '0 5',
             allowBlank: 'false',
@@ -603,7 +603,7 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
         },{
             xtype: 'container',
             layout: 'vbox',
-            margin: '0 500 0 0',
+            margin: '0 465 0 0',
             flex: 1,
             items: [{
                 xtype: 'datefield',

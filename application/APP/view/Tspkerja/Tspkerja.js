@@ -4,10 +4,17 @@ Ext.define('Almindo.view.Tspkerja.Tspkerja', {
     requires: [
         'Almindo.controller.Ctspkerja',
         'Almindo.view.temp.Trickmenu',
+        'Almindo.view.Tspkerja.TABtspkerja',
         'Almindo.view.Tspkerja.FRMtspkerja',
         'Almindo.view.Tspkerja.GRIDtspkerja',
+        'Almindo.view.Tspkerja.WINtspkcustomer',
+        'Almindo.view.Tspkerja.WINtspkbahan',
         'Almindo.store.STtspkerja',
-        'Almindo.model.MODtspkerja'
+        'Almindo.model.MODtspkerja',
+        'Almindo.view.Mcustomer.GRIDmcustomer',
+        'Almindo.store.STmcustomer',
+        'Almindo.view.Mbahan.GRIDmbahan',
+        'Almindo.store.STmbahan'
     ],
     constructor: function (config) {
         return this.callParent(arguments);
@@ -29,17 +36,19 @@ Ext.define('Almindo.view.Tspkerja.Tspkerja', {
                     region: 'north',
                     xtype:'trickmenu'
                 },{
-                    region: 'center',
-                    xtype: 'tabpanel',
-                    margin: '5 0 5 0',
-                    items: [{
-                        xtype: 'FRMtspkerja',
-                        title: 'FORM INPUT SURAT PERINTAH KERJA'
-                    },{
-                        xtype: 'GRIDtspkerja',
-                        title: 'LIST DATA SURAT PERINTAH KERJA'
-                    }]
-                }
+                        region:'center',
+                        xtype:'container',
+                        layout:'column',
+                        margin:'5 0 5 0',
+                        defaultType:'container',
+                        items:[{
+                            columnWidth: 1/1,
+                            padding: '0 5 5 5',
+                            items: [{
+                                    xtype: 'TABtspkerja'
+                            }]
+                      }]
+                   }
             ]
 
         });

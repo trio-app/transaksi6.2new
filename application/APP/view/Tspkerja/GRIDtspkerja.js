@@ -2,7 +2,6 @@ Ext.define('Almindo.view.Tspkerja.GRIDtspkerja', {
     extend: 'Ext.grid.Panel',
     alias:'widget.GRIDtspkerja',
     reference:'GRIDtspkerja',
-    title: 'List Data SURAT PERINTAH KERJA',
 //            modal: true,
 //            width:600,
     height:400,
@@ -39,7 +38,7 @@ Ext.define('Almindo.view.Tspkerja.GRIDtspkerja', {
                           metadata.style = 'background-color: ' + backgroundColor + ';';
                           return val;
                       }
-                      if (val == 'FINISH') {
+                      if (val == 'SELESAI') {
                           backgroundColor = "green";
                           metadata.style = 'background-color: ' + backgroundColor + ';';
                           return val;
@@ -56,12 +55,6 @@ Ext.define('Almindo.view.Tspkerja.GRIDtspkerja', {
         displayInfo: true,
         displayMsg: 'Displaying topics {0} - {1} of {2}',
         emptyMsg: "No topics to display"
+        
     }
-
-    
-//    listeners:{
-//            'afterrender': function(panel){
-//                panel.setPosition(250,60);
-//            }
-//        }
 });

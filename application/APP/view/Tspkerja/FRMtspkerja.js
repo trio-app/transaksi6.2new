@@ -31,7 +31,6 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
                 fieldLabel: 'No. Document ',
                 name: 'spk_doc',
                 emptyText: 'Auto Number',
-                width: 350,
                 allowBlank: false,
                 readOnly: true,
                 labelWidth: 120,
@@ -52,10 +51,21 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
             xtype: 'datefield',
             fieldLabel: 'Document Date ',
             name: 'spk_date',
-            width: 350,
             labelWidth: 120,
             format: 'Y-m-d',
             //value: new Date()
+        },{
+            xtype: 'container',
+            layout: 'hbox',
+            items: [{
+                xtype: 'box',
+                flex: 1
+            },{
+                xtype: 'button',
+                text: 'View List Surat Perintah Kerja',
+                icon: base_url + 'system/images/icons/grid.png',
+                action: 'tabgrid'
+            }]
         }]
     },{
         xtype: 'container',
@@ -110,7 +120,7 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
             icon: base_url + 'system/img/user_add.gif',
             xtype: 'button',
             text: 'Pilih Customer',
-            action: 'add_cust',
+            action: 'btn_customer',
             flex: 0,
             width: 120,
             margin: '5 10'
@@ -137,7 +147,7 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
             icon: base_url + 'system/images/icons/produk.png',
             width: 120,
             text: 'Pilih Produk',
-            action: 'add_bahan',
+            action: 'btn_bahan',
             flex: 0,
             margin: '5 10'
         }]
@@ -231,6 +241,49 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
                     flex: 1,
                     margin: '5 5',
                     allowBlank: 'false',
+                     listeners: {
+                        change: function(field, newVal, oldVal) {
+                            console.log("Calculating");
+                            var bahanP = Ext.getCmp('bahan_ukuranP').getValue();
+                            var matapisau = Ext.getCmp('spk_matapisau').getValue();
+                            var digunakanP = Ext.getCmp('ukuranP_digunakan');
+
+                            var order = Ext.getCmp('spk_qtyorder').getValue();
+                            var bahanL = Ext.getCmp('bahan_ukuranL').getValue();
+                            var gap = Ext.getCmp('bahan_gap').getValue();
+                            var total_all = Ext.getCmp('total');
+
+                            if (bahanP > 0 && matapisau <= 1) {
+                                digunakanP.setValue( 
+                                    bahanP + 1
+                                );
+                            }
+                            else if (bahanP > 0 && matapisau <= 2) {
+                                digunakanP.setValue( 
+                                   (bahanP * matapisau)+ 0.5 + 0.5 + 0.5 
+                                );
+                            }
+                            else if (bahanP > 0 && matapisau <= 3) {
+                                digunakanP.setValue( 
+                                   (bahanP * matapisau)+ 0.5 + 0.5 + 0.5 + 0.5
+                                );
+                            }
+                            else if (bahanP > 0 && matapisau <= 4) {
+                                digunakanP.setValue( 
+                                   (bahanP * matapisau)+ 0.5 + 0.5 + 0.5 + 0.5 + 0.5 
+                                );
+                            }
+                            else if (bahanP > 0 && matapisau <= 5) {
+                                digunakanP.setValue( 
+                                   (bahanP * matapisau)+ 0.5 + 0.5 + 0.5 + 0.5 + 0.5 + 0.5
+                                );
+                            }
+                            total_all.setValue(
+                                    (bahanL + gap) * order / 1000 / matapisau
+                                );
+                    }  
+
+                  }
                 },{
                     xtype: 'numberfield',
                     id: 'bahan_gap',
@@ -241,13 +294,36 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
                     margin: '5 5',
                     allowBlank: 'false',
                     readOnly: true,
+                    listeners: {
+                        change: function(field, newVal, oldVal) {
+                            console.log("Calculating");
+                            var order = Ext.getCmp('spk_qtyorder').getValue();
+                            var upp = Ext.getCmp('spk_upporder').getValue();
+                            var mata_pisau = Ext.getCmp('spk_matapisau').getValue();
+                            var total = Ext.getCmp('spk_totalorder');
+
+                            var bahanL = Ext.getCmp('bahan_ukuranL').getValue();
+                            var gap = Ext.getCmp('bahan_gap').getValue();
+                            var total_all = Ext.getCmp('total');
+                            if (order > 0 && upp > 0 && mata_pisau > 0) {
+                                total.setValue( 
+                                     order / upp
+                                );
+                                total_all.setValue(
+                                    (bahanL + gap) * order / 1000 / mata_pisau
+                                );
+                            }
+
+                        }  
+
+                    }
                 }]
             }]
         }]
     },{
         xtype: 'container',
         layout: 'hbox',
-        margin: '5 5',
+        margin: '5',
         defaults: {
             flex: 1,
             xtype: 'numberfield'
@@ -255,17 +331,23 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
         items: [{
             id: 'spk_mataperbaris',
             name: 'spk_mataperbaris',
-            labelWidth: 120,
             fieldLabel: 'Baris LINE ',
+            labelWidth: 120,
             allowBlank: 'false',
         },{
-            margin: '0 5',
             name: 'spk_jumlahpisau',
             fieldLabel: 'Total Mata Pisau ',
+            allowBlank: 'false'
+        },{
+            xtype: 'textfield',
+            id: 'bahan_glasin',
+            name: 'spk_glasin',
+            fieldLabel: 'Warna Glasin',
             allowBlank: 'false',
+            fieldStyle: 'background-color: #ffa144; background-image: none;'
         },{
             xtype: 'box',
-            flex: 2
+            flex: 1
         }]
     },{
         xtype: 'container',
@@ -311,6 +393,27 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
         margin: '5',
         defaults: {
             flex: 1,
+            listeners: {
+                change: function(field, newVal, oldVal){
+                    console.log("Calculating");
+                    var order = Ext.getCmp("spk_qtyorder").getValue();
+                    var upp = Ext.getCmp("spk_upporder").getValue();
+                    var total = Ext.getCmp("spk_totalorder");
+                    var mata_pisau = Ext.getCmp('spk_matapisau').getValue();
+                    
+                    var bahanL = Ext.getCmp('bahan_ukuranL').getValue();
+                    var gap = Ext.getCmp('bahan_gap').getValue();
+                    var total_all = Ext.getCmp('total');
+                    if (order > 0 && upp > 0 && mata_pisau > 0) {
+                            total.setValue( 
+                                 order / upp
+                            );
+                            total_all.setValue(
+                                (bahanL + gap) * order / 1000 / mata_pisau
+                            );
+                }
+            }
+        }
         },
         items: [{
             id: 'spk_qtyorder',
@@ -415,6 +518,26 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
                 margin: '0 0 0 5',
                 allowBlank: 'false',
                 value: '1000',
+                listeners: {
+                    change: function(field, newVal, oldVal) {
+                        console.log("Calculating");
+                        var roll = Ext.getCmp('jml_roll');
+                        var total_luas = Ext.getCmp('total2');
+                        var total_all = Ext.getCmp('total').getValue();
+                        var digunakanP = Ext.getCmp('ukuranP_digunakan').getValue();
+                        var digunakanL = Ext.getCmp('ukuranL_digunakan').getValue();
+
+                        if (total_all > 0 && digunakanL > 0 ) {
+                                roll.setValue(
+                                    Math.ceil(total_all / digunakanL)
+                                );
+
+                                total_luas.setValue(
+                                    (digunakanP / 1000) * total_all 
+                                );
+                        }
+                    }
+                }
             }]
         },{
             xtype: 'box',
@@ -430,6 +553,28 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
             xtype: 'container',
             margin: '0 5',
             layout: 'vbox',
+            defaults: {
+                listeners: {
+                    change: function(field, newVal, oldVal) {
+                        console.log("Calculating");
+                        var roll = Ext.getCmp('jml_roll');
+                        var total_luas = Ext.getCmp('total2');
+                        var total_all = Ext.getCmp('total').getValue();
+                        var digunakanP = Ext.getCmp('ukuranP_digunakan').getValue();
+                        var digunakanL = Ext.getCmp('ukuranL_digunakan').getValue();
+                        
+                        if (total_all > 0 && digunakanL > 0) {
+                                roll.setValue(
+                                    Math.ceil(total_all / digunakanL)
+                                );
+
+                                total_luas.setValue(
+                                    (digunakanP / 1000) * total_all 
+                                );
+                        }
+                    }
+                }
+            },
             items: [{
                 xtype: 'numberfield',
                 id: 'jml_roll',
@@ -458,26 +603,25 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
         },{
             xtype: 'container',
             layout: 'vbox',
-            margin: '0 134',
+            margin: '0 500 0 0',
+            flex: 1,
             items: [{
                 xtype: 'datefield',
                 name: 'spk_tglkirim',
                 fieldLabel: 'Tanggal Kirim ',
                 format: 'Y-m-d',
-                width: 325,
                 //value: new Date()
             },{
                 xtype: 'textfield',
                 name: 'spk_nosuratjalan',
                 fieldLabel: 'No. Surat Jalan ',
-                width: 325
             }]
         }]
     },{
         xtype: 'container',
         layout: 'hbox',
         margin: '0 10',
-        width: 720,
+        
         items: [{
             xtype: 'textareafield',
             name: 'keterangan_digunakan',
@@ -485,6 +629,28 @@ Ext.define('Almindo.view.Tspkerja.FRMtspkerja', {
             grow: true,
             anchor: '100%',
             flex: 1,
+            width: 720
+        },{
+            xtype: 'button',
+            icon: base_url + 'system/images/icons/produk.png',
+            width: 75,
+            height: 50,
+            text: 'PROSES',
+            tooltip: 'Klik untuk memproses pembuatan Produk',
+            action: 'btn_proses',
+            flex: 0,
+            margin: '5 10'
+        },{
+            layout: 'vbox',
+            xtype: 'button',
+            icon: base_url + 'system/images/icons/produk.png',
+            width: 75,
+            height: 50,
+            text: 'SELESAI',
+            tooltip: 'Klik jika Produk telah di buat',
+            action: 'btn_selesai',
+            flex: 0,
+            margin: '5 10'
         }]
     }]
 });

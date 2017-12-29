@@ -27,9 +27,9 @@ Ext.define('Almindo.view.temp.Trickmenu', {
                 
             },'-',{
                 xtype: 'button',
-                pid:'gridtable',
-                iconCls: 'fa fa-table',
-                tooltip:'Show Data Table'
+                pid:'print',
+                iconCls: 'fa fa-print',
+                tooltip:'Print Document'
                 
             },'->',{
                 xtype: 'button',
